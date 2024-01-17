@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4qk5gllwytiv"]
+
+[ext_resource type="Texture2D" uid="uid://6lwsf8sjrk5c" path="res://Assets/hex_grid.png" id="1_7rud8"]
+[ext_resource type="Script" path="res://Code/TileMap.gd" id="2_p0q3h"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_drkh3"]
+texture = ExtResource("1_7rud8")
+margins = Vector2i(9, 8)
+separation = Vector2i(18, 32)
+texture_region_size = Vector2i(110, 96)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSet" id="TileSet_8nkgr"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(102, 94)
+uv_clipping = true
+physics_layer_0/collision_layer = 1
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.392157, 0.403922, 0.133333, 1)
+sources/0 = SubResource("TileSetAtlasSource_drkh3")
+
+[node name="stupid tilemap" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_8nkgr")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65536, 0, 0, -1, 0, 0, 0, 65536, 0, -65535, 65536, 0, 1, 65536, 0, 65536, 65536, 0, 65535, 65536, 0, -65534, 65536, 0, 65537, 131072, 0, 65538, 131072, 0, 65540, 131072, 0, 4, 131072, 0, 65541, 0, 0, 5, 0, 0, -65531, 0, 0, 2, 0, 0, 3, 0, 0, -65533, 0, 0)
+script = ExtResource("2_p0q3h")

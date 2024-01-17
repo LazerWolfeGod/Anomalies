@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnf8m26hstvrf"]
+
+[ext_resource type="PackedScene" uid="uid://cbyibpbyfttdi" path="res://Scenes/Fins tiles.tscn" id="3_vniyx"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Map" parent="." instance=ExtResource("3_vniyx")]
