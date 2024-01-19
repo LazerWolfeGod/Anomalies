@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://b07ctb60h6qn3"]
+
+[ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_jp1lc"]
+[ext_resource type="Script" path="res://Code/menu.gd" id="2_6msmd"]
+[ext_resource type="Script" path="res://code/Button.gd" id="3_eebur"]
+[ext_resource type="Texture2D" uid="uid://cl601mjfw4e5v" path="res://Assets/Military Cat.png" id="4_gnygo"]
+[ext_resource type="Texture2D" uid="uid://24w1lq47tiso" path="res://Assets/Cat.png" id="5_ghf1p"]
+[ext_resource type="Texture2D" uid="uid://gwol1dyygpcc" path="res://Assets/Miner Cat.png" id="6_n17jr"]
+
+[sub_resource type="Theme" id="Theme_yltp0"]
+
+[node name="Hex Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_jp1lc")
+script = ExtResource("2_6msmd")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 78.0
+offset_top = 306.0
+offset_right = 307.0
+offset_bottom = 378.0
+theme = ExtResource("1_jp1lc")
+text = "I have no idea how 
+buttons work"
+script = ExtResource("3_eebur")
+
+[node name="Info" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 127.0
+offset_right = 1134.0
+offset_bottom = 274.0
+theme = SubResource("Theme_yltp0")
+
+[node name="MilitaryCat" type="Sprite2D" parent="Info"]
+position = Vector2(179, 103)
+rotation = 3.14159
+scale = Vector2(0.2, -0.2)
+texture = ExtResource("4_gnygo")
+
+[node name="Cat" type="Sprite2D" parent="Info"]
+position = Vector2(327, 103)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_ghf1p")
+
+[node name="MinerCat" type="Sprite2D" parent="Info"]
+position = Vector2(413, 104)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_n17jr")
+
+[node name="Buildings_List" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 513.0
+offset_top = 296.0
+offset_right = 786.0
+offset_bottom = 627.0
+pivot_offset = Vector2(-0.085, 0)
+theme = ExtResource("1_jp1lc")
+
+[node name="Label" type="Label" parent="Buildings_List"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 13.0
+offset_right = 264.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "This will contain
+ data about the thing"
+
+[node name="Buildings Shop" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 845.0
+offset_top = 301.0
+offset_right = 1130.0
+offset_bottom = 628.0
+pivot_offset = Vector2(-0.085, 0)
+theme = ExtResource("1_jp1lc")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

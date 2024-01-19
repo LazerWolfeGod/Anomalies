@@ -11,6 +11,7 @@ func exit():
 
 
 func _on_button_button_down():
+	print('clicked')
 	exit()
 	
 func ready(data):

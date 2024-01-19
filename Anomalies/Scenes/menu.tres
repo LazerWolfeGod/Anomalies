@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://c2jlnqd4fwdh"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c2jlnqd4fwdh"]
 
 [ext_resource type="Texture2D" uid="uid://bvbi5c66p7hlk" path="res://Assets/GUI/menu border.png" id="1_kp7eb"]
+[ext_resource type="FontFile" uid="uid://dbe168n7l72w8" path="res://Assets/fonts/droid-sans/DroidSans.ttf" id="2_gykkw"]
 [ext_resource type="Texture2D" uid="uid://p38oqudv2h5b" path="res://Assets/GUI/Exit.png" id="2_ujdpa"]
-[ext_resource type="StyleBox" uid="uid://b3q71rk7w8sgj" path="res://Assets/GUI/Exit Pressed.png" id="3_5reag"]
+[ext_resource type="FontFile" uid="uid://brglbe05bw1gu" path="res://Assets/fonts/poco/Poco.ttf" id="3_yp1x2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8c7mq"]
 texture = ExtResource("1_kp7eb")
@@ -23,6 +24,12 @@ axis_stretch_vertical = 1
 region_rect = Rect2(274.174, 378.136, 720.246, 377.272)
 
 [resource]
+default_font = ExtResource("3_yp1x2")
+default_font_size = 26
+Label/colors/font_color = Color(0, 0, 0, 1)
 Panel/styles/panel = SubResource("StyleBoxTexture_8c7mq")
+TooltipLabel/colors/font_color = Color(0.94902, 0.839216, 0.905882, 1)
+TooltipLabel/font_sizes/font_size = 12
+TooltipLabel/fonts/font = ExtResource("2_gykkw")
 Tree/styles/custom_button = SubResource("StyleBoxTexture_7r66n")
-Tree/styles/custom_button_pressed = ExtResource("3_5reag")
+Tree/styles/custom_button_pressed = null

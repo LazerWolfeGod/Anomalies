@@ -66,7 +66,7 @@ def perlin_overwrite(limit,overwrite,grid,gridsize=3):
 
 def randompoint(p,r):
     ang = random.random()*2*math.pi
-    mod = r*(random.random()+1)
+    mod = r*(random.random()*2+1)
     return [p[0]+mod*math.cos(ang),p[1]+mod*math.sin(ang)]
 def check_accepted(p,grid,r):
     lis = []
@@ -103,7 +103,7 @@ def poisson_overwrite(r,overwrite,grid):
         grid[int(p[1])][int(p[0])] = overwrite
     
 def map_generator(w,h):
-    random.seed(10)
+    random.seed(11)
     grid = [[1 for a in range(w)] for b in range(h)]
     
     perlin_overwrite(0.3,5,grid)
@@ -122,19 +122,19 @@ def map_generator(w,h):
 
 
 
-##key = {0:(0,0,0),1:(42,139,42),2:(150,149,149),3:(218,73,73),4:(40,110,174),5:(61,150,61),6:(150,30,140)}
-##grid = map_generator(60,40)
+key = {0:(0,0,0),1:(42,139,42),2:(150,149,149),3:(218,73,73),4:(40,110,174),5:(61,150,61),6:(150,30,140)}
+grid = map_generator(60,40)
 
-points = poisson_disk_sampling(800,800,10)
+##points = poisson_disk_sampling(800,800,10)
 
 while not done:
     for event in ui.loadtickdata():
         if event.type == pygame.QUIT:
             done = True
     screen.fill(pyui.Style.wallpapercol)
-##    draw_grid(grid,30)
-    for a in points:
-        pygame.draw.circle(screen,(0,0,255),a,4)
+    draw_grid(grid,30)
+##    for a in points:
+##        pygame.draw.circle(screen,(0,0,255),a,4)
     ui.rendergui(screen)
     pygame.display.flip()
     clock.tick(60)                                               

@@ -5,6 +5,7 @@ const movespeed = 2000
 const scalesize = 1.1
 
 var tileinfo: Array = []
+var tile_high_light = Vector2i.ZERO
 var rng = RandomNumberGenerator.new()
 
 const atlas_key = {
@@ -58,10 +59,15 @@ func _ready():
 		tileinfo.append([])
 		for x in range(get_used_rect().size.x):
 			tileinfo[-1].append(gen_tile_dict(Vector2i(x,y)))
-			set_cell(1,Vector2i(x,y),0)
+	
+	var player_scene = load("res://Scenes/player.tscn")
+	var player = player_scene.instantiate()
+	add_sibling(player)
+	player.ready(Vector2i(28,12))
 
 func _process(delta):
 	move(delta)
+	highlight()
 	
 	
 func move(delta):
@@ -84,7 +90,15 @@ func move(delta):
 		position+=get_viewport_rect().size*(1-1/scalesize)*((get_viewport().get_mouse_position()-position)/get_viewport_rect().size)
 		scale/=1.1
 		
-	
+func highlight():
+	if not menuopen:
+		var clicked_pos = get_global_mouse_position()
+		var map_pos = local_to_map(to_local(clicked_pos))
+		if get_cell_atlas_coords(0,map_pos) != Vector2i(-1,-1):
+			if map_pos != tile_high_light:
+				set_cell(1,tile_high_light,2,Vector2i(-1,-1))
+				tile_high_light = map_pos
+				set_cell(1,tile_high_light,2,Vector2i(2,1))
 	
 func _input(event):
 	if event is InputEventMouseButton:
@@ -93,7 +107,7 @@ func _input(event):
 				var clicked_pos = event.position
 				var map_pos = local_to_map(to_local(clicked_pos))
 				if get_cell_atlas_coords(0,map_pos) != Vector2i(-1,-1):
-					var menu_scene = load("res://Scenes/menu.tscn")
+					var menu_scene = load("res://Scenes/Hex_Menu.tscn")
 					var menu = menu_scene.instantiate()
 					add_sibling(menu)
 					menu.ready(tileinfo[map_pos.y][map_pos.x])
