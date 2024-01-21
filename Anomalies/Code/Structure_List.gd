@@ -1,7 +1,4 @@
-extends Control
-
-var tile_accessible = false
-var tile_owned = false
+extends Panel
 
 const structures = {
 	"House":[{"Cost":{"Wood":4,"Rock":8},"Upkeep":{"Water":1,"Food":1},"Output":{"Max_Population":4}},{},{}],
@@ -28,51 +25,13 @@ const image_files = {
 	"Metal":"res://Assets/GUI/metal.png"
 }
 
-
-func _process(delta):
-	if Input.is_action_just_pressed("Back"):
-		exit()
-
-func exit():
-	get_node("../TileMap").shutmenu()
-	queue_free()
-
-
-func _on_button_button_down():
-	print('clicked')
-	exit()
-	
-func ready(data):
-	tile_accessible = data["Player_Accessible"]
-	tile_owned = data["Player_Owned"]
-	
-	$Buildable/Hex_Display.set_cell(0,Vector2i.ZERO,2,data["Atlas_Cords"])
-	print()
-	$not_owned_panel.hide()
-	$Buildable.hide()
-	if not tile_accessible:
-		$not_owned_panel.show()
-		$not_owned_panel/Hex_Label.text = data["Tile"]+" Tile"
-	else:
-		$Buildable.show()
-		$Buildable/Hex_Display/Hex_Label.text = data["Tile"]+" Tile"
-		
-	var available_structures = []
-	for struc in data["Possible_Structures"]:
-		available_structures.append({"Name":struc})
-	refresh_structure_list(available_structures)
-	if tile_owned:
-		pass
-
 var sprites = []
 
-
 func refresh_structure_list(available):
-	#for y in range(5):
-		#$Buildable/Structure_List/Structure_List.set_cell(0,Vector2i(0,y),0,atlas_dict["None"])
+	for y in range(5):
+		$Structure_List.set_cell(0,Vector2i(0,y),0,atlas_dict["None"])
 	for y in range(available.size()):
-		print(y,atlas_dict[available[y]["Name"]])
-		$Buildable/Structure_List/Structure_List.set_cell(0,Vector2i(0,y),0,atlas_dict[available[y]["Name"]])
+		$Structure_List.set_cell(0,Vector2i(0,y),0,atlas_dict[available[y]["Name"]])
 		var xpos = 0
 		for mat in structures[available[y]["Name"]][0]["Cost"]:
 			make_sprite(mat,xpos,y,structures[available[y]["Name"]][0]["Cost"][mat])
@@ -83,13 +42,14 @@ func make_sprite(image,x,y,val):
 	var sprite = Sprite2D.new()
 	sprite.texture = load(image_files[image])
 	sprite.scale = Vector2(0.5,0.5)
-	sprite.position = Vector2(105,40)+$Buildable/Structure_List/Structure_List.position+Vector2(x*80,y*80)
-	$Buildable/Structure_List.add_child(sprite)
+	sprite.position = Vector2(105,40)+$Structure_List.position+Vector2(x*80,y*80)
+	add_child(sprite)
 	
 	var text = Label.new()
 	text.text = str(val)
 	text.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	text.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	text.position = Vector2(115,40)+$Buildable/Structure_List/Structure_List.position+Vector2(x*80,y*80)
-	$Buildable/Structure_List.add_child(text)
+	text.position = Vector2(115,40)+$Structure_List.position+Vector2(x*80,y*80)
+	add_child(text)
+	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnf8m26hstvrf"]
+[gd_scene load_steps=3 format=3 uid="uid://bmaj7cpbre4wo"]
 
 [ext_resource type="PackedScene" uid="uid://6ut2vqlev282" path="res://Scenes/game_gui.tscn" id="2_12da1"]
 [ext_resource type="PackedScene" uid="uid://cbyibpbyfttdi" path="res://Scenes/Fins tiles.tscn" id="3_vniyx"]
