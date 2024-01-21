@@ -1,10 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmaj7cpbre4wo"]
+[gd_scene load_steps=2 format=3 uid="uid://bmaj7cpbre4wo"]
 
-[ext_resource type="PackedScene" uid="uid://6ut2vqlev282" path="res://Scenes/game_gui.tscn" id="2_12da1"]
 [ext_resource type="PackedScene" uid="uid://cbyibpbyfttdi" path="res://Scenes/Fins tiles.tscn" id="3_vniyx"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Map" parent="." instance=ExtResource("3_vniyx")]
-
-[node name="Game Gui" parent="." instance=ExtResource("2_12da1")]

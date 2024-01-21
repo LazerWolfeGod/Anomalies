@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://6ut2vqlev282"]
+[gd_scene load_steps=8 format=3 uid="uid://6ut2vqlev282"]
 
 [ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_cis8t"]
+[ext_resource type="Script" path="res://Scenes/game_gui.gd" id="2_opms4"]
 [ext_resource type="Texture2D" uid="uid://b32ltksncg7x4" path="res://Assets/GUI/Menu border 2.png" id="2_tsdrk"]
 [ext_resource type="Texture2D" uid="uid://dnjg6wbwiv20j" path="res://Assets/GUI/Wood.png" id="3_pjb16"]
 [ext_resource type="Texture2D" uid="uid://bcki4yd2exhqk" path="res://Assets/GUI/Water.png" id="4_wqdli"]
@@ -20,6 +21,7 @@ anchors_preset = 0
 offset_right = 1153.0
 offset_bottom = 649.0
 theme = ExtResource("1_cis8t")
+script = ExtResource("2_opms4")
 
 [node name="Top_Bar" type="Panel" parent="."]
 layout_mode = 0
@@ -30,7 +32,7 @@ offset_bottom = 98.0
 theme = ExtResource("1_cis8t")
 theme_override_styles/panel = SubResource("StyleBoxTexture_t42pi")
 
-[node name="Wood_Icon" type="TextureRect" parent="Top_Bar"]
+[node name="Wood" type="TextureRect" parent="Top_Bar"]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 45.0
@@ -41,7 +43,7 @@ theme = ExtResource("1_cis8t")
 texture = ExtResource("3_pjb16")
 expand_mode = 2
 
-[node name="Wood_Amount" type="Label" parent="Top_Bar/Wood_Icon"]
+[node name="Amount" type="Label" parent="Top_Bar/Wood"]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 14.0
@@ -51,17 +53,17 @@ theme = ExtResource("1_cis8t")
 text = "65
 "
 
-[node name="Wood_Change" type="Label" parent="Top_Bar/Wood_Icon"]
+[node name="Change" type="Label" parent="Top_Bar/Wood"]
 layout_mode = 0
 offset_left = 60.0
 offset_top = -6.0
 offset_right = 100.0
 offset_bottom = 29.0
 theme = ExtResource("1_cis8t")
-theme_override_colors/font_color = Color(0, 0.780392, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "+4"
 
-[node name="Water_Icon" type="TextureRect" parent="Top_Bar"]
+[node name="Water" type="TextureRect" parent="Top_Bar"]
 layout_mode = 0
 offset_left = 203.0
 offset_top = 37.0
@@ -73,7 +75,7 @@ texture = ExtResource("4_wqdli")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Wood_Amount" type="Label" parent="Top_Bar/Water_Icon"]
+[node name="Amount" type="Label" parent="Top_Bar/Water"]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 24.0
@@ -82,7 +84,7 @@ offset_bottom = 59.0
 theme = ExtResource("1_cis8t")
 text = "36"
 
-[node name="Wood_Change" type="Label" parent="Top_Bar/Water_Icon"]
+[node name="Change" type="Label" parent="Top_Bar/Water"]
 layout_mode = 0
 offset_left = 47.0
 offset_top = 1.0
@@ -92,7 +94,7 @@ theme = ExtResource("1_cis8t")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "-2"
 
-[node name="Wood_Icon3" type="TextureRect" parent="Top_Bar"]
+[node name="Population" type="TextureRect" parent="Top_Bar"]
 layout_mode = 0
 offset_left = 353.0
 offset_top = 40.0
@@ -104,7 +106,7 @@ texture = ExtResource("5_r2ey6")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="Wood_Amount" type="Label" parent="Top_Bar/Wood_Icon3"]
+[node name="Amount" type="Label" parent="Top_Bar/Population"]
 layout_mode = 0
 offset_left = 46.0
 offset_top = 23.0
@@ -114,7 +116,7 @@ theme = ExtResource("1_cis8t")
 text = "45/100
 "
 
-[node name="Wood_Change" type="Label" parent="Top_Bar/Wood_Icon3"]
+[node name="Change" type="Label" parent="Top_Bar/Population"]
 layout_mode = 0
 offset_left = 46.0
 offset_right = 86.0

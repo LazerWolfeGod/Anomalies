@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbyibpbyfttdi"]
+[gd_scene load_steps=6 format=3 uid="uid://cbyibpbyfttdi"]
 
 [ext_resource type="TileSet" uid="uid://dieamonx6plg3" path="res://Scenes/Main tileset.tres" id="1_wowkc"]
 [ext_resource type="Script" path="res://Code/Main Tilemap.gd" id="2_0bpyf"]
+[ext_resource type="PackedScene" uid="uid://6ut2vqlev282" path="res://Scenes/game_gui.tscn" id="3_3wroy"]
+[ext_resource type="Texture2D" uid="uid://c2sf5g53asb8s" path="res://Assets/cool_monsta.png" id="4_eop3s"]
+[ext_resource type="Script" path="res://Scenes/CoolMonsta.gd" id="5_ulww6"]
 
 [node name="Map" type="Node2D"]
 
@@ -14,10 +17,20 @@ layer_0/tile_data = PackedInt32Array(-1, 2, 0, 65535, 2, 0, 131071, 2, 0, 196607
 layer_1/name = "Hight_light"
 layer_1/modulate = Color(1, 1, 1, 0.498039)
 layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Owned"
+layer_2/modulate = Color(1, 1, 1, 0.286275)
+layer_2/tile_data = PackedInt32Array(1048597, 262146, 1, 983061, 262146, 1, 1048598, 262146, 1, 1048599, 262146, 1, 1114135, 262146, 1, 1114134, 262146, 1, 1114133, 262146, 1, 983062, 262146, 1, 983063, 262146, 1, 1048600, 262146, 1, 1048601, 262146, 1, 983064, 262146, 1, 1114136, 262146, 1)
 script = ExtResource("2_0bpyf")
 
 [node name="Day_Cycle" type="Timer" parent="."]
-wait_time = 10.0
 autostart = true
+
+[node name="Game_Gui" parent="." instance=ExtResource("3_3wroy")]
+
+[node name="CoolMonsta" type="Sprite2D" parent="."]
+position = Vector2(-1434, -876)
+scale = Vector2(0.185, 0.185)
+texture = ExtResource("4_eop3s")
+script = ExtResource("5_ulww6")
 
 [connection signal="timeout" from="Day_Cycle" to="TileMap" method="_on_timer_timeout"]

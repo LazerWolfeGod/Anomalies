@@ -8,6 +8,7 @@ var tileinfo: Array = []
 var tile_high_light = Vector2i.ZERO
 var rng = RandomNumberGenerator.new()
 var player
+var menu
 
 
 const atlas_key = {
@@ -26,7 +27,7 @@ const tile_init_data = {
 	"City":{"Population":10,"Max_Population":100,"Max_Structures":[3],"Possible_Structures":["House"]},
 	"Water":{"Water":true,"Max_Structures":[0]},
 	"Meadow":{"Food":true,"Max_Structures":[3],"Possible_Structures":["House","Farm","Wind Turbine"]},
-	"Core":{"Player_Owned":true,"Player_Accessible":true},
+	"Core":{"Structures":[{"Name":"Core","Level":1,"Owner":"Player","Upkeep":{},"Output":{"Wood":1,"Water":2,"Food":1,"Max_Wood":15,"Max_Water":10,"Max_Food":5,"Max_Energy":10,"Max_Population":3}}]},
 	"None":{}
 }
 
@@ -39,6 +40,7 @@ func gen_tile_dict(pos):
 		"Atlas_Cords":atlas_cords,
 		"Population":0,
 		"Max_Population":0,
+		"Owner":"None",
 		"Player_Owned":false,
 		"Player_Accessible":false,
 		"Wood":false,
@@ -47,7 +49,7 @@ func gen_tile_dict(pos):
 		"Food":false,
 		"Corruption":0,
 		"Max_Structures":0,
-		"Structures": {},
+		"Structures":[],
 		"Possible_Structures": []
 	}
 	tile_dict["Tile"] = tile_type
@@ -62,9 +64,17 @@ func update_tile_data():
 	for y in range(len(tileinfo)):
 		for x in range(len(tileinfo[y])):
 			var around = get_surrounding_cells(Vector2i(x,y))
+			set_cell(2,Vector2(x,y),2,Vector2i(-1,-1))
+			if len(tileinfo[y][x]["Structures"]) > 0:
+				if tileinfo[y][x]["Structures"][0]["Owner"] == "Player":
+					tileinfo[y][x]["Player_Owned"] = true
+					tileinfo[y][x]["Player_Accessible"] = true
 			if tileinfo[y][x]["Player_Owned"]:
+				set_cell(2,Vector2(x,y),2,Vector2i(4,1))
 				for p in around:
 					tileinfo[p.y][p.x]["Player_Accessible"] = true
+	var resources = player.calc_resources(tileinfo)
+	$"../Game_Gui".UpdateGui(resources)
 
 func ranchoice(lis):
 	var ran = rng.randi_range(0,len(lis)-1)
@@ -75,15 +85,34 @@ func _ready():
 		tileinfo.append([])
 		for x in range(get_used_rect().size.x):
 			tileinfo[-1].append(gen_tile_dict(Vector2i(x,y)))
-	
+
 	var player_scene = load("res://Scenes/player.tscn")
 	player = player_scene.instantiate()
-	add_sibling.call_deferred(player)
-	player.readyfunc(Vector2i(28,12))
+	add_sibling(player)
+	update_tile_data()
 
 func _process(delta):
 	move(delta)
 	highlight()
+	if menuopen:
+		var check = menu.get_buying()
+		if check[0]:
+			var can_buy = true
+			var tile = tileinfo[menu.data["Map_Pos"].y][menu.data["Map_Pos"].x]
+			if tile["Structures"].size() == tile["Max_Structures"]:
+				can_buy = false
+			for mat in menu.structures[check[1]][0]["Cost"]:
+				if menu.structures[check[1]][0]["Cost"][mat]>player.resources[mat]["Amount"]:
+					can_buy = false
+			if can_buy:
+				add_structure(menu.data["Map_Pos"],check[1])
+				for mat in menu.structures[check[1]][0]["Cost"]:
+					player.resources[mat]["Amount"] -= menu.structures[check[1]][0]["Cost"][mat]
+				
+				update_tile_data()
+				player.calc_resources(tileinfo)
+				$"../Game_Gui".UpdateGui(player.resources)
+				menu.refresh_current_list()
 	
 	
 	
@@ -127,13 +156,19 @@ func _input(event):
 					update_tile_data()
 					var data = get_cell_tile_data(0,map_pos)
 					var menu_scene = load("res://Scenes/Hex_Menu.tscn")
-					var menu = menu_scene.instantiate()
+					menu = menu_scene.instantiate()
 					add_sibling(menu)
 					get_used_rect()
 					
 					menu.ready(tileinfo[map_pos.y][map_pos.x])
 					menuopen = true
 					set_layer_modulate(1,Color(1,1,1,0.9))
+
+func add_structure(pos,structure):
+	tileinfo[pos.y][pos.x]["Structures"].append({
+		"Name":structure,"Level":1,"Owner":"Player",
+		"Upkeep":menu.structures[structure][0]["Upkeep"],
+		"Output":menu.structures[structure][0]["Output"]})
 
 func shutmenu():
 	menuopen = false
@@ -143,3 +178,4 @@ func shutmenu():
 
 func _on_timer_timeout():
 	player.pass_time()
+	$"../Game_Gui".UpdateGui(player.resources)

@@ -1,13 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b07ctb60h6qn3"]
+[gd_scene load_steps=11 format=3 uid="uid://b07ctb60h6qn3"]
 
 [ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_jp1lc"]
 [ext_resource type="Script" path="res://Code/menu.gd" id="2_6msmd"]
 [ext_resource type="Script" path="res://code/Button.gd" id="3_eebur"]
 [ext_resource type="TileSet" uid="uid://dieamonx6plg3" path="res://Scenes/Main tileset.tres" id="4_hb8p6"]
-[ext_resource type="Texture2D" uid="uid://c2sf5g53asb8s" path="res://Assets/cool_monsta.png" id="4_pa87a"]
 [ext_resource type="Texture2D" uid="uid://ddidp62fwcxo0" path="res://Assets/GUI/Menu border 3.png" id="4_qs4ye"]
 [ext_resource type="Texture2D" uid="uid://ctj50db86xtfd" path="res://Assets/GUI/Structure Tile Map.png" id="7_63uiw"]
-[ext_resource type="Texture2D" uid="uid://cl601mjfw4e5v" path="res://Assets/Military Cat.png" id="7_we78b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myewi"]
 bg_color = Color(0, 0, 0, 0.541176)
@@ -92,12 +90,6 @@ Hex Adjacent to
 It to Access it."
 horizontal_alignment = 1
 
-[node name="CoolMonsta" type="Sprite2D" parent="not_owned_panel"]
-position = Vector2(651, 0)
-rotation = 1.13446
-scale = Vector2(0.36, 0.36)
-texture = ExtResource("4_pa87a")
-
 [node name="Buildable" type="Node2D" parent="."]
 
 [node name="Hex_Display" type="TileMap" parent="Buildable"]
@@ -170,11 +162,6 @@ scale = Vector2(0.275, 0.275)
 tile_set = SubResource("TileSet_qx1hb")
 rendering_quadrant_size = 45
 format = 2
-
-[node name="MilitaryCat" type="Sprite2D" parent="Buildable"]
-position = Vector2(-13, 171)
-rotation = -2.47313
-scale = Vector2(0.39, -0.39)
-texture = ExtResource("7_we78b")
+layer_0/tile_data = PackedInt32Array(0, 327680, 0)
 
 [connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

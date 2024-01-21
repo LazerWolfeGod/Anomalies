@@ -1,8 +1,8 @@
 import pygame,math,random,sys,os
 import PyUI as pyui
 pygame.init()
-screenw = 1200
-screenh = 900
+screenw = 120
+screenh = 90
 screen = pygame.display.set_mode((screenw, screenh),pygame.RESIZABLE)
 ui = pyui.UI()
 done = False
@@ -131,6 +131,8 @@ while not done:
     for event in ui.loadtickdata():
         if event.type == pygame.QUIT:
             done = True
+
+    print(ui.mprs)
     screen.fill(pyui.Style.wallpapercol)
     draw_grid(grid,30)
 ##    for a in points:
