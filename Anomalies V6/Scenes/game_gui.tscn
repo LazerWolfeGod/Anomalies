@@ -1,0 +1,127 @@
+[gd_scene load_steps=8 format=3 uid="uid://6ut2vqlev282"]
+
+[ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_cis8t"]
+[ext_resource type="Script" path="res://Scenes/game_gui.gd" id="2_opms4"]
+[ext_resource type="Texture2D" uid="uid://b32ltksncg7x4" path="res://Assets/GUI/Menu border 2.png" id="2_tsdrk"]
+[ext_resource type="Texture2D" uid="uid://dnjg6wbwiv20j" path="res://Assets/GUI/Wood.png" id="3_pjb16"]
+[ext_resource type="Texture2D" uid="uid://bcki4yd2exhqk" path="res://Assets/GUI/Water.png" id="4_wqdli"]
+[ext_resource type="Texture2D" uid="uid://cmvo40yr8bljg" path="res://Assets/GUI/House Sign.png" id="5_r2ey6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t42pi"]
+texture = ExtResource("2_tsdrk")
+texture_margin_left = 42.8339
+texture_margin_top = 41.1375
+texture_margin_right = 44.1062
+texture_margin_bottom = 48.3471
+region_rect = Rect2(0.805481, 0.805969, 427.915, 111.114)
+
+[node name="Game_Gui" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1153.0
+offset_bottom = 649.0
+theme = ExtResource("1_cis8t")
+script = ExtResource("2_opms4")
+
+[node name="Top_Bar" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = -39.0
+offset_right = 1089.0
+offset_bottom = 98.0
+theme = ExtResource("1_cis8t")
+theme_override_styles/panel = SubResource("StyleBoxTexture_t42pi")
+
+[node name="Wood" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 45.0
+offset_right = 90.0
+offset_bottom = 95.0
+tooltip_text = "Wood"
+theme = ExtResource("1_cis8t")
+texture = ExtResource("3_pjb16")
+expand_mode = 2
+
+[node name="Amount" type="Label" parent="Top_Bar/Wood"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 14.0
+offset_right = 114.0
+offset_bottom = 49.0
+theme = ExtResource("1_cis8t")
+text = "65
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Wood"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 29.0
+theme = ExtResource("1_cis8t")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "+4"
+
+[node name="Water" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 37.0
+offset_right = 239.0
+offset_bottom = 97.0
+tooltip_text = "Water"
+theme = ExtResource("1_cis8t")
+texture = ExtResource("4_wqdli")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Water"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 24.0
+offset_right = 101.0
+offset_bottom = 59.0
+theme = ExtResource("1_cis8t")
+text = "36"
+
+[node name="Change" type="Label" parent="Top_Bar/Water"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 36.0
+theme = ExtResource("1_cis8t")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "-2"
+
+[node name="Population" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 40.0
+offset_right = 403.0
+offset_bottom = 99.0
+tooltip_text = "Wood"
+theme = ExtResource("1_cis8t")
+texture = ExtResource("5_r2ey6")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Population"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 23.0
+offset_right = 98.0
+offset_bottom = 58.0
+theme = ExtResource("1_cis8t")
+text = "45/100
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Population"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 86.0
+offset_bottom = 35.0
+theme = ExtResource("1_cis8t")
+theme_override_colors/font_color = Color(0, 0.780392, 0, 1)
+text = "+3
+"
