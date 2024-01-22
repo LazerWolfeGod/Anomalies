@@ -1,0 +1,51 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dieamonx6plg3"]
+
+[ext_resource type="Texture2D" uid="uid://dgn30tfnqe28r" path="res://Assets/Tile Map/highlight.png" id="1_vry81"]
+[ext_resource type="Texture2D" uid="uid://7i5cp44gso5f" path="res://Assets/Tile Map/fins tylemap.png" id="2_lm2sn"]
+[ext_resource type="Texture2D" uid="uid://d2nyha1mp1c0a" path="res://Assets/Tile Map/Tall tileset.png" id="2_x7y4d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_76sfw"]
+texture = ExtResource("1_vry81")
+texture_region_size = Vector2i(589, 652)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iexn6"]
+texture = ExtResource("2_x7y4d")
+margins = Vector2i(3, 129)
+texture_region_size = Vector2i(598, 1170)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b76ef"]
+texture = ExtResource("2_lm2sn")
+margins = Vector2i(46, 38)
+separation = Vector2i(10, 32)
+texture_region_size = Vector2i(496, 573)
+0:0/0 = 0
+1:0/next_alternative_id = 7
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/next_alternative_id = 4
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+
+[resource]
+tile_shape = 3
+tile_size = Vector2i(496, 571)
+sources/2 = SubResource("TileSetAtlasSource_b76ef")
+sources/0 = SubResource("TileSetAtlasSource_76sfw")
+sources/1 = SubResource("TileSetAtlasSource_iexn6")
