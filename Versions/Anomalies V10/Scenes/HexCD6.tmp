@@ -1,0 +1,180 @@
+[gd_scene load_steps=13 format=3 uid="uid://b07ctb60h6qn3"]
+
+[ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_jp1lc"]
+[ext_resource type="Script" path="res://Code/HexMenu.gd" id="2_6msmd"]
+[ext_resource type="Script" path="res://code/Button.gd" id="3_eebur"]
+[ext_resource type="TileSet" uid="uid://dieamonx6plg3" path="res://Scenes/Main tileset.tres" id="4_hb8p6"]
+[ext_resource type="Texture2D" uid="uid://c2sf5g53asb8s" path="res://Assets/cool_monsta.png" id="4_pa87a"]
+[ext_resource type="Texture2D" uid="uid://ddidp62fwcxo0" path="res://Assets/GUI/Menu border 3.png" id="4_qs4ye"]
+[ext_resource type="Texture2D" uid="uid://ctj50db86xtfd" path="res://Assets/GUI/Structure Tile Map.png" id="7_63uiw"]
+[ext_resource type="Texture2D" uid="uid://cl601mjfw4e5v" path="res://Assets/Military Cat.png" id="7_we78b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myewi"]
+bg_color = Color(0, 0, 0, 0.541176)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hlcm"]
+texture = ExtResource("4_qs4ye")
+texture_margin_left = 23.8169
+texture_margin_top = 130.512
+texture_margin_right = 22.1989
+texture_margin_bottom = 133.907
+region_rect = Rect2(-0.671221, -1.32502, 283.204, 159.674)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw3ks"]
+texture = ExtResource("7_63uiw")
+margins = Vector2i(39, 85)
+separation = Vector2i(12, 0)
+texture_region_size = Vector2i(263, 276)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qx1hb"]
+tile_size = Vector2i(356, 290)
+sources/0 = SubResource("TileSetAtlasSource_lw3ks")
+
+[node name="Hex Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_jp1lc")
+script = ExtResource("2_6msmd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -11.0
+offset_right = 9980.0
+offset_bottom = 9989.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_myewi")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 207.0
+offset_top = 10.0
+offset_right = 436.0
+offset_bottom = 82.0
+theme = ExtResource("1_jp1lc")
+text = "I have no idea how 
+buttons work"
+script = ExtResource("3_eebur")
+
+[node name="not_owned_panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 228.0
+offset_right = 656.0
+offset_bottom = 421.0
+
+[node name="Hex_Label" type="Label" parent="not_owned_panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -11.0
+offset_right = 188.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.678431, 0.282353, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.74902, 0.282353, 0, 1)
+text = "Thing Tile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="Label" parent="not_owned_panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 37.0
+offset_right = 203.0
+offset_bottom = 174.0
+text = "You Do Not Own
+This Hex, Get A
+Hex Adjacent to 
+It to Access it."
+horizontal_alignment = 1
+
+[node name="CoolMonsta" type="Sprite2D" parent="not_owned_panel"]
+position = Vector2(651, 0)
+rotation = 1.13446
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("4_pa87a")
+
+[node name="Buildable" type="Node2D" parent="."]
+
+[node name="Hex_Display" type="TileMap" parent="Buildable"]
+position = Vector2(106, 197)
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("4_hb8p6")
+format = 2
+layer_0/name = "Main"
+layer_1/name = "Highlight"
+layer_1/tile_data = PackedInt32Array(0, 0, 0)
+
+[node name="Hex_Label" type="Label" parent="Buildable/Hex_Display"]
+offset_left = 40.0
+offset_top = -170.0
+offset_right = 250.0
+offset_bottom = -110.0
+scale = Vector2(2, 2)
+theme = ExtResource("1_jp1lc")
+theme_override_colors/font_color = Color(0.529412, 0.796078, 0.521569, 1)
+theme_override_colors/font_shadow_color = Color(0.756863, 0.0980392, 0.521569, 1)
+theme_override_font_sizes/font_size = 40
+text = "Thing Tile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Structure_List" type="Panel" parent="Buildable"]
+offset_left = 791.0
+offset_top = 121.0
+offset_right = 1059.0
+offset_bottom = 617.0
+theme = ExtResource("1_jp1lc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_6hlcm")
+
+[node name="Structure_List" type="TileMap" parent="Buildable/Structure_List"]
+position = Vector2(34, 57)
+scale = Vector2(0.275, 0.275)
+tile_set = SubResource("TileSet_qx1hb")
+rendering_quadrant_size = 45
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 327680, 0, 131072, 327680, 0, 196608, 327680, 0, 262144, 327680, 0, 0, 327680, 0)
+
+[node name="Info" type="Label" parent="Buildable/Structure_List"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 22.0
+offset_right = 229.0
+offset_bottom = 54.0
+theme = ExtResource("1_jp1lc")
+text = "Build Structures"
+
+[node name="Built_List" type="Panel" parent="Buildable"]
+offset_left = 487.0
+offset_top = 118.0
+offset_right = 755.0
+offset_bottom = 614.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6hlcm")
+
+[node name="Info" type="Label" parent="Buildable/Built_List"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 20.0
+offset_right = 242.0
+offset_bottom = 52.0
+theme = ExtResource("1_jp1lc")
+text = "Current Structures"
+
+[node name="Structure_List" type="TileMap" parent="Buildable/Built_List"]
+position = Vector2(34, 57)
+scale = Vector2(0.275, 0.275)
+tile_set = SubResource("TileSet_qx1hb")
+rendering_quadrant_size = 45
+format = 2
+
+[node name="MilitaryCat" type="Sprite2D" parent="Buildable"]
+position = Vector2(-13, 171)
+rotation = -2.47313
+scale = Vector2(0.39, -0.39)
+texture = ExtResource("7_we78b")
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
