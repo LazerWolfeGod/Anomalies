@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://gf0wspq8twc3"]
+
+[ext_resource type="Script" path="res://Code/Corruption.gd" id="1_rec8q"]
+
+[node name="Corruption" type="Node2D"]
+script = ExtResource("1_rec8q")
+
+[node name="Heart_Beat" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Heart_Beat" to="." method="_on_heart_beat_timeout"]

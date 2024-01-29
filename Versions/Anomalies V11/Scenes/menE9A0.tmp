@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://b07ctb60h6qn3"]
+
+[ext_resource type="Script" path="res://code/Button.gd" id="1_celnq"]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 55.0
+offset_right = 276.0
+offset_bottom = 112.0
+text = "THIS IS A BUTTON"
+script = ExtResource("1_celnq")
+
+[node name="Info" type="Panel" parent="."]
+offset_left = 514.0
+offset_top = 13.0
+offset_right = 1133.0
+offset_bottom = 143.0
+
+[node name="Label" type="Label" parent="Info"]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 45.0
+offset_right = 141.0
+offset_bottom = 68.0
+text = "This will contain data about the thing"
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 520.0
+offset_top = 160.0
+offset_right = 778.0
+offset_bottom = 617.0
+pivot_offset = Vector2(-0.085, 0)
+
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
