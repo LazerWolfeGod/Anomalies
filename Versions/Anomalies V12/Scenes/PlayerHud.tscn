@@ -1,0 +1,272 @@
+[gd_scene load_steps=15 format=3 uid="uid://6ut2vqlev282"]
+
+[ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_8lmw5"]
+[ext_resource type="Script" path="res://Code/PlayerHud.gd" id="2_550pe"]
+[ext_resource type="Texture2D" uid="uid://b32ltksncg7x4" path="res://Assets/GUI/Menu border 2.png" id="3_u6u4k"]
+[ext_resource type="Texture2D" uid="uid://dnjg6wbwiv20j" path="res://Assets/GUI/Resources/Wood.png" id="4_a0531"]
+[ext_resource type="Texture2D" uid="uid://bcki4yd2exhqk" path="res://Assets/GUI/Resources/Water.png" id="5_8ibkj"]
+[ext_resource type="Texture2D" uid="uid://cmvo40yr8bljg" path="res://Assets/GUI/Resources/House Sign.png" id="6_6207b"]
+[ext_resource type="Texture2D" uid="uid://blwtpm7qfr0rh" path="res://Assets/GUI/Resources/Metal.png" id="7_a0m8f"]
+[ext_resource type="Texture2D" uid="uid://b0lk0powjxikn" path="res://Assets/GUI/Resources/Stone.png" id="8_ddto5"]
+[ext_resource type="Texture2D" uid="uid://hxi6snqoshj8" path="res://Assets/GUI/Resources/Food.png" id="9_qm2qw"]
+[ext_resource type="Texture2D" uid="uid://bvasjn4l44wdl" path="res://Assets/GUI/Resources/Energy.png" id="10_feyrs"]
+[ext_resource type="Texture2D" uid="uid://bhce78r4upxrr" path="res://Assets/GUI/Buttons/Xp bar/loading_background.png" id="11_xtbsi"]
+[ext_resource type="Texture2D" uid="uid://c6ab21arowm37" path="res://Assets/GUI/Buttons/Xp bar/loading_cover.png" id="12_30ivv"]
+[ext_resource type="Texture2D" uid="uid://dir45y850my8n" path="res://Assets/GUI/Buttons/Xp bar/loading_bar.png" id="13_ichyw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t42pi"]
+texture = ExtResource("3_u6u4k")
+texture_margin_left = 42.8339
+texture_margin_top = 41.1375
+texture_margin_right = 44.1062
+texture_margin_bottom = 48.3471
+region_rect = Rect2(0.805481, 0.805969, 427.915, 111.114)
+
+[node name="PlayerHud" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+theme = ExtResource("1_8lmw5")
+script = ExtResource("2_550pe")
+
+[node name="Top_Bar" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 58.0
+offset_top = -39.0
+offset_right = 1089.0
+offset_bottom = 98.0
+theme = ExtResource("1_8lmw5")
+theme_override_styles/panel = SubResource("StyleBoxTexture_t42pi")
+
+[node name="Wood" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 45.0
+offset_right = 90.0
+offset_bottom = 95.0
+tooltip_text = "Wood"
+theme = ExtResource("1_8lmw5")
+texture = ExtResource("4_a0531")
+expand_mode = 2
+
+[node name="Amount" type="Label" parent="Top_Bar/Wood"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 14.0
+offset_right = 114.0
+offset_bottom = 49.0
+theme = ExtResource("1_8lmw5")
+text = "65
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Wood"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 29.0
+theme = ExtResource("1_8lmw5")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+4"
+
+[node name="Water" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 38.0
+offset_right = 219.0
+offset_bottom = 98.0
+tooltip_text = "Water"
+theme = ExtResource("1_8lmw5")
+texture = ExtResource("5_8ibkj")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Water"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 24.0
+offset_right = 101.0
+offset_bottom = 59.0
+theme = ExtResource("1_8lmw5")
+text = "36"
+
+[node name="Change" type="Label" parent="Top_Bar/Water"]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 1.0
+offset_right = 87.0
+offset_bottom = 36.0
+theme = ExtResource("1_8lmw5")
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+text = "-2"
+
+[node name="Population" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 39.0
+offset_right = 346.0
+offset_bottom = 98.0
+tooltip_text = "Wood"
+theme = ExtResource("1_8lmw5")
+texture = ExtResource("6_6207b")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Population"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 23.0
+offset_right = 98.0
+offset_bottom = 58.0
+theme = ExtResource("1_8lmw5")
+text = "45/100
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Population"]
+layout_mode = 0
+offset_left = 46.0
+offset_right = 86.0
+offset_bottom = 35.0
+theme = ExtResource("1_8lmw5")
+theme_override_colors/font_color = Color(0, 0.780392, 0, 1)
+text = "+3
+"
+
+[node name="Metal" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 433.0
+offset_top = 47.0
+offset_right = 493.0
+offset_bottom = 97.0
+tooltip_text = "Wood"
+theme = ExtResource("1_8lmw5")
+texture = ExtResource("7_a0m8f")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Metal"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 16.0
+offset_right = 118.0
+offset_bottom = 51.0
+theme = ExtResource("1_8lmw5")
+text = "65
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Metal"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = -5.0
+offset_right = 106.0
+offset_bottom = 30.0
+theme = ExtResource("1_8lmw5")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+4"
+
+[node name="Rock" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 47.0
+offset_right = 612.0
+offset_bottom = 97.0
+tooltip_text = "Wood"
+theme = ExtResource("1_8lmw5")
+texture = ExtResource("8_ddto5")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Rock"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 14.0
+offset_right = 114.0
+offset_bottom = 49.0
+theme = ExtResource("1_8lmw5")
+text = "65
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Rock"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -6.0
+offset_right = 100.0
+offset_bottom = 29.0
+theme = ExtResource("1_8lmw5")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+4"
+
+[node name="Food" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 804.0
+offset_top = 46.0
+offset_right = 864.0
+offset_bottom = 96.0
+tooltip_text = "Wood"
+theme = ExtResource("1_8lmw5")
+texture = ExtResource("9_qm2qw")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Food"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = 16.0
+offset_right = 118.0
+offset_bottom = 51.0
+theme = ExtResource("1_8lmw5")
+text = "65
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Food"]
+layout_mode = 0
+offset_left = 66.0
+offset_top = -5.0
+offset_right = 106.0
+offset_bottom = 30.0
+theme = ExtResource("1_8lmw5")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+4"
+
+[node name="Energy" type="TextureRect" parent="Top_Bar"]
+layout_mode = 0
+offset_left = 702.0
+offset_top = 48.0
+offset_right = 745.0
+offset_bottom = 98.0
+tooltip_text = "Wood"
+theme = ExtResource("1_8lmw5")
+texture = ExtResource("10_feyrs")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Top_Bar/Energy"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 15.0
+offset_right = 97.0
+offset_bottom = 50.0
+theme = ExtResource("1_8lmw5")
+text = "65
+"
+
+[node name="Change" type="Label" parent="Top_Bar/Energy"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = -5.0
+offset_right = 86.0
+offset_bottom = 30.0
+theme = ExtResource("1_8lmw5")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+text = "+4"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 701.0
+offset_top = 572.0
+offset_right = 1138.0
+offset_bottom = 628.0
+value = 50.0
+texture_under = ExtResource("11_xtbsi")
+texture_over = ExtResource("12_30ivv")
+texture_progress = ExtResource("13_ichyw")

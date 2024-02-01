@@ -1,0 +1,223 @@
+[gd_scene load_steps=19 format=3 uid="uid://b07ctb60h6qn3"]
+
+[ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_jp1lc"]
+[ext_resource type="Script" path="res://Code/HexMenu.gd" id="2_6msmd"]
+[ext_resource type="TileSet" uid="uid://dieamonx6plg3" path="res://Scenes/Main tileset.tres" id="4_hb8p6"]
+[ext_resource type="Texture2D" uid="uid://c2sf5g53asb8s" path="res://Assets/cool_monsta.png" id="4_pa87a"]
+[ext_resource type="Texture2D" uid="uid://ddidp62fwcxo0" path="res://Assets/GUI/Menu border 3.png" id="4_qs4ye"]
+[ext_resource type="PackedScene" uid="uid://dynspklijvdwy" path="res://Scenes/hex_menu_struc_display.tscn" id="6_5o0o4"]
+[ext_resource type="Texture2D" uid="uid://ctj50db86xtfd" path="res://Assets/GUI/Structure Tile Map.png" id="7_63uiw"]
+[ext_resource type="Texture2D" uid="uid://deba8e48q0is1" path="res://Assets/GUI/Buttons/upgrade arrow/Base.png" id="7_ycv6a"]
+[ext_resource type="Texture2D" uid="uid://ykqkpo8dxxs6" path="res://Assets/GUI/Buttons/upgrade arrow/Pressed.png" id="8_dfl6l"]
+[ext_resource type="Texture2D" uid="uid://cdjf1h4erhwee" path="res://Assets/GUI/Buttons/upgrade arrow/Hover.png" id="9_k7itj"]
+[ext_resource type="Texture2D" uid="uid://cwbg866dlt85i" path="res://Assets/GUI/Buttons/upgrade arrow/Disabled.png" id="10_hp6n3"]
+[ext_resource type="Texture2D" uid="uid://cs6gpcpd2ik41" path="res://Assets/GUI/Buttons/Structure Border/Base.png" id="11_017pn"]
+[ext_resource type="Texture2D" uid="uid://7r6h7j8i3rsa" path="res://Assets/GUI/Buttons/Structure Border/Pressed.png" id="12_v5o38"]
+[ext_resource type="Texture2D" uid="uid://cgp01ir4uxfrf" path="res://Assets/GUI/Buttons/Structure Border/Hover.png" id="13_apsgp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myewi"]
+bg_color = Color(0, 0, 0, 0.541176)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6hlcm"]
+texture = ExtResource("4_qs4ye")
+texture_margin_left = 23.8169
+texture_margin_top = 130.512
+texture_margin_right = 22.1989
+texture_margin_bottom = 133.907
+region_rect = Rect2(-0.671221, -1.32502, 283.204, 159.674)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw3ks"]
+texture = ExtResource("7_63uiw")
+margins = Vector2i(30, 31)
+separation = Vector2i(7, 9)
+texture_region_size = Vector2i(268, 268)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qx1hb"]
+tile_size = Vector2i(356, 290)
+sources/0 = SubResource("TileSetAtlasSource_lw3ks")
+
+[node name="Hex Menu" type="Control"]
+z_index = 6
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 1
+theme = ExtResource("1_jp1lc")
+script = ExtResource("2_6msmd")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -11.0
+offset_right = 9980.0
+offset_bottom = 9989.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_myewi")
+
+[node name="not_owned_panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 228.0
+offset_right = 656.0
+offset_bottom = 421.0
+
+[node name="Hex_Label" type="Label" parent="not_owned_panel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = -11.0
+offset_right = 188.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.678431, 0.282353, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.74902, 0.282353, 0, 1)
+text = "Thing Tile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Info" type="Label" parent="not_owned_panel"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 37.0
+offset_right = 203.0
+offset_bottom = 174.0
+text = "You Do Not Own
+This Hex, Get A
+Hex Adjacent to 
+It to Access it."
+horizontal_alignment = 1
+
+[node name="CoolMonsta" type="Sprite2D" parent="not_owned_panel"]
+position = Vector2(651, 0)
+rotation = 1.13446
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("4_pa87a")
+
+[node name="Buildable" type="Control" parent="."]
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="Structure_List" type="Panel" parent="Buildable"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 103.0
+offset_right = 298.0
+offset_bottom = 599.0
+mouse_filter = 1
+theme = ExtResource("1_jp1lc")
+theme_override_styles/panel = SubResource("StyleBoxTexture_6hlcm")
+
+[node name="Structure_List" type="TileMap" parent="Buildable/Structure_List"]
+visible = false
+position = Vector2(34, 57)
+scale = Vector2(0.275, 0.275)
+tile_set = SubResource("TileSet_qx1hb")
+rendering_quadrant_size = 45
+format = 2
+layer_0/tile_data = PackedInt32Array(65536, 327680, 0, 131072, 327680, 0, 196608, 327680, 0, 262144, 327680, 0, 0, 327680, 0)
+
+[node name="Title" type="Label" parent="Buildable/Structure_List"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 22.0
+offset_right = 229.0
+offset_bottom = 54.0
+theme = ExtResource("1_jp1lc")
+text = "Build Structures"
+
+[node name="Seperator" type="VBoxContainer" parent="Buildable/Structure_List"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 63.0
+offset_right = 247.0
+offset_bottom = 264.0
+
+[node name="Container" parent="Buildable/Structure_List/Seperator" instance=ExtResource("6_5o0o4")]
+layout_mode = 2
+
+[node name="Container2" parent="Buildable/Structure_List/Seperator" instance=ExtResource("6_5o0o4")]
+layout_mode = 2
+
+[node name="Owned" type="Panel" parent="Buildable"]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 110.0
+offset_right = 583.0
+offset_bottom = 606.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_6hlcm")
+
+[node name="upgrade" type="Button" parent="Buildable/Owned"]
+visible = false
+layout_mode = 0
+offset_left = 23.0
+offset_top = 400.0
+offset_right = 119.0
+offset_bottom = 457.0
+mouse_filter = 1
+text = "Upgrade"
+
+[node name="Structure_List" type="TileMap" parent="Buildable/Owned"]
+visible = false
+position = Vector2(21, 230)
+scale = Vector2(0.275, 0.275)
+tile_set = SubResource("TileSet_qx1hb")
+rendering_quadrant_size = 45
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 327680, 0)
+
+[node name="Hex_Display" type="TileMap" parent="Buildable/Owned"]
+position = Vector2(81, 74)
+scale = Vector2(0.201519, 0.2)
+tile_set = ExtResource("4_hb8p6")
+format = 2
+layer_0/name = "Main"
+layer_1/name = "Highlight"
+layer_1/tile_data = PackedInt32Array(0, 0, 0)
+
+[node name="Hex_Label" type="Label" parent="Buildable/Owned"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 22.0
+offset_right = 185.0
+offset_bottom = 54.0
+theme = ExtResource("1_jp1lc")
+theme_override_colors/font_color = Color(0.12549, 0.227451, 0.121569, 1)
+theme_override_colors/font_shadow_color = Color(0.756863, 0.0980392, 0.521569, 1)
+theme_override_font_sizes/font_size = 26
+text = "Thing Tile"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Upgrade" type="TextureButton" parent="Buildable/Owned"]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 103.0
+offset_right = 466.0
+offset_bottom = 423.0
+scale = Vector2(0.18, 0.18)
+texture_normal = ExtResource("7_ycv6a")
+texture_pressed = ExtResource("8_dfl6l")
+texture_hover = ExtResource("9_k7itj")
+texture_disabled = ExtResource("10_hp6n3")
+
+[node name="Structure Outline" type="TextureButton" parent="Buildable/Owned"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 212.0
+offset_right = 585.0
+offset_bottom = 812.0
+scale = Vector2(0.12, 0.12)
+texture_normal = ExtResource("11_017pn")
+texture_pressed = ExtResource("12_v5o38")
+texture_hover = ExtResource("13_apsgp")
+
+[connection signal="button_down" from="Buildable/Owned/upgrade" to="." method="_on_upgrade_button_down"]

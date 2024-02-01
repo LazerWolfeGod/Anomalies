@@ -1,0 +1,35 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c2jlnqd4fwdh"]
+
+[ext_resource type="Texture2D" uid="uid://bvbi5c66p7hlk" path="res://Assets/GUI/menu border.png" id="1_kp7eb"]
+[ext_resource type="FontFile" uid="uid://dbe168n7l72w8" path="res://Assets/fonts/droid-sans/DroidSans.ttf" id="2_gykkw"]
+[ext_resource type="Texture2D" uid="uid://p38oqudv2h5b" path="res://Assets/GUI/Exit.png" id="2_ujdpa"]
+[ext_resource type="FontFile" uid="uid://brglbe05bw1gu" path="res://Assets/fonts/poco/Poco.ttf" id="3_yp1x2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8c7mq"]
+texture = ExtResource("1_kp7eb")
+texture_margin_left = 16.9751
+texture_margin_top = 14.4888
+texture_margin_right = 14.4959
+texture_margin_bottom = 14.7662
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+region_rect = Rect2(-2.19092, -1.78542, 53.5368, 55.0602)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7r66n"]
+texture = ExtResource("2_ujdpa")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(274.174, 378.136, 720.246, 377.272)
+
+[resource]
+default_font = ExtResource("3_yp1x2")
+default_font_size = 26
+Label/colors/font_color = Color(0, 0, 0, 1)
+Panel/styles/panel = SubResource("StyleBoxTexture_8c7mq")
+TooltipLabel/colors/font_color = Color(0.94902, 0.839216, 0.905882, 1)
+TooltipLabel/font_sizes/font_size = 12
+TooltipLabel/fonts/font = ExtResource("2_gykkw")
+Tree/styles/custom_button = SubResource("StyleBoxTexture_7r66n")
+Tree/styles/custom_button_pressed = null

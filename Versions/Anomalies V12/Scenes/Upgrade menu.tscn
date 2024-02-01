@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://clrpllmi8fj1f"]
+
+[ext_resource type="Theme" uid="uid://c2jlnqd4fwdh" path="res://Scenes/menu.tres" id="1_jtogs"]
+[ext_resource type="StyleBox" uid="uid://bvvx5gy6sycdy" path="res://Scenes/Hex_Menu.tres" id="2_g0o01"]
+[ext_resource type="Texture2D" uid="uid://ctj50db86xtfd" path="res://Assets/GUI/Structure Tile Map.png" id="3_gx3bu"]
+[ext_resource type="Script" path="res://Scenes/Upgrade menu.gd" id="3_m4gur"]
+[ext_resource type="Texture2D" uid="uid://hk7ovccqs106" path="res://Assets/GUI/Buttons/Tick/non_pressed_selectede_nin.png" id="4_knc0u"]
+[ext_resource type="Texture2D" uid="uid://dorbpy2frtwff" path="res://Assets/GUI/Buttons/Tick/pressed.png" id="5_jckxe"]
+[ext_resource type="Texture2D" uid="uid://ujrpkqlp6ytn" path="res://Assets/GUI/Buttons/Tick/selected.png" id="6_4ffwc"]
+[ext_resource type="Texture2D" uid="uid://bxwmm82kbrtjv" path="res://Assets/GUI/Buttons/cross/x_not_selected_red.png" id="7_55nll"]
+[ext_resource type="Texture2D" uid="uid://d66dp8coedgo" path="res://Assets/GUI/Buttons/cross/x_red_pressed_light.png" id="8_ct8ah"]
+[ext_resource type="Texture2D" uid="uid://dioi3rd6ftlul" path="res://Assets/GUI/Buttons/cross/x_red_light_x.png" id="9_6fnuc"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lw3ks"]
+texture = ExtResource("3_gx3bu")
+margins = Vector2i(30, 31)
+separation = Vector2i(7, 9)
+texture_region_size = Vector2i(268, 268)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+3:1/0 = 0
+2:1/0 = 0
+1:1/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_e34r0"]
+tile_size = Vector2i(356, 290)
+sources/0 = SubResource("TileSetAtlasSource_lw3ks")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lcs8s"]
+line_spacing = -7.0
+font_color = Color(0, 0, 0, 1)
+
+[node name="Upgrade Menu" type="Panel"]
+offset_right = 269.0
+offset_bottom = 497.0
+theme = ExtResource("1_jtogs")
+theme_override_styles/panel = ExtResource("2_g0o01")
+script = ExtResource("3_m4gur")
+
+[node name="Structure_List" type="TileMap" parent="."]
+position = Vector2(18, 57)
+scale = Vector2(0.275, 0.275)
+tile_set = SubResource("TileSet_e34r0")
+rendering_quadrant_size = 45
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 327680, 0)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 17.0
+offset_right = 231.0
+offset_bottom = 49.0
+text = "Upgrade to lvl 2"
+
+[node name="Description" type="Label" parent="."]
+offset_left = 113.0
+offset_top = 47.0
+offset_right = 249.0
+offset_bottom = 134.0
+text = "Some text that explains what the thing does"
+label_settings = SubResource("LabelSettings_lcs8s")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Cost" type="Label" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 137.0
+offset_right = 80.0
+offset_bottom = 169.0
+text = "Cost"
+
+[node name="Upkeep" type="Label" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 212.0
+offset_right = 105.0
+offset_bottom = 244.0
+text = "Upkeep"
+
+[node name="Output" type="Label" parent="."]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 293.0
+offset_right = 101.0
+offset_bottom = 325.0
+text = "Output"
+
+[node name="Tick" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 391.0
+offset_right = 410.0
+offset_bottom = 631.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("4_knc0u")
+texture_pressed = ExtResource("5_jckxe")
+texture_hover = ExtResource("6_4ffwc")
+
+[node name="Cross" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 393.0
+offset_right = 262.0
+offset_bottom = 633.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("7_55nll")
+texture_pressed = ExtResource("8_ct8ah")
+texture_hover = ExtResource("9_6fnuc")
+
+[connection signal="button_down" from="Tick" to="." method="_on_tick_button_down"]
+[connection signal="button_down" from="Cross" to="." method="_on_cross_button_down"]
